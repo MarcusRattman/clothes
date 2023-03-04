@@ -12,7 +12,7 @@
           None Selected
         </div>
         <div class="card" v-for="el in store.getChLeft" v-bind:key="el.id" v-on:click="store.removeChLeft(el.id)">
-          {{ el.name }}
+          ➖{{ el.name }}
         </div>
       </div>
 
@@ -20,19 +20,23 @@
 
       <div class="left-container">
         <div class="card" v-for="el in store.getLeft" v-bind:key="el.id" v-on:click="store.chooseLeft(el.id)">
-          {{ el.name }}
+          ➕{{ el.name }}
         </div>
       </div>
     </div>
 
     <div class="content-right">
-      <div class="card" v-on:click="store.removeChRight">
-        {{ store.getChRight.name ? store.getChRight.name : "None Selected" }}
+      <div class="card" v-if="!store.getChRight.id">
+        None Selected
+      </div>
+
+      <div class="card" v-on:click="store.removeChRight" v-if="store.getChRight.id">
+        ➖{{ store.getChRight.name }}
       </div>
 
       <div class="right-container">
         <div class="card" v-for="el in store.getRight" v-bind:key="el.id" v-on:click="store.chooseRight(el.id)">
-          {{ el.name }}
+          ➕{{ el.name }}
         </div>
       </div>
     </div>
